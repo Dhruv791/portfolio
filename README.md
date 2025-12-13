@@ -1,4 +1,4 @@
-# 🚀 Suryansh Tyagi - Portfolio Website
+# 🚀 Dhruv Tyagi - Portfolio Website
 
 A modern, animated, and responsive personal portfolio website built with React, Tailwind CSS, and Framer Motion.
 
