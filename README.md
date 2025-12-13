@@ -208,7 +208,7 @@ And update `src/styles/index.css` Google Fonts import.
 ## 📁 Project Structure
 
 ```
-suryansh-portfolio/
+portfolio-dhruv/
 ├── public/
 ├── src/
 │   ├── components/
@@ -309,4 +309,4 @@ Built with ❤️ using:
 
 ---
 
-**Made by Suryansh Tyagi** | [GitHub](https://github.com/Suryanshtyagi12) | [Email](mailto:tyagisurya.04@gmail.com)
+**Made by Dhruv Tyagi** | [GitHub](https://github.com/Dhruv791) | [Email](mailto:gunnutyagi49@gmail.com)

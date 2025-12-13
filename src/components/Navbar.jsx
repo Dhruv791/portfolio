@@ -52,7 +52,7 @@ const Navbar = ({ darkMode, toggleTheme }) => {
             className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent cursor-pointer"
             onClick={() => scrollToSection('#home')}
           >
-            ST
+            DT
           </motion.div>
 
           {/* Desktop Menu */}

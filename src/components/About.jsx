@@ -181,8 +181,7 @@ const About = ({ darkMode }) => {
                     <p
                       className={darkMode ? 'text-gray-300' : 'text-gray-700'}
                     >
-                      Building AI-powered applications, solving complex data problems, and creating intuitive web experiences.
-                    </p>
+                      Building scalable full-stack applications, solving complex problems, and creating intuitive web experiences.                    </p>
                   </div>
                 </div>
               </motion.div>

@@ -4,33 +4,35 @@
 
 export const CONFIG = {
   personal: {
-    name: "Suryansh Tyagi",
-    tagline: "AI/ML Engineer | Data Scientist | Generative AI & Deep Learning Practitioner",
+    name: "Dhruv Tyagi",
+    tagline: "Full-Stack Developer | Problem Solver | B.Tech CSE Student",
 
     // Use Vite-resolved URLs for assets inside src/assets
     profileImage: new URL('../assets/projects/Profile.jpg', import.meta.url).href,
 
     bio:
-      "AI/ML Engineer and Data Scientist with hands-on experience in Machine Learning, Deep Learning, NLP, and Generative AI. I build intelligent systems such as OCR models, RAG pipelines, LLM-powered applications, and data-driven analytical solutions. Skilled in transforming raw data into actionable insights and deploying scalable AI products.",
+            "Third-year B.Tech (CSE) student building web apps and data-driven projects. Experienced with frontend frameworks (Angular, React), backend (Node.js, PHP), and strong in Data Structures & Algorithms. I enjoy turning problems into clean, maintainable solutions and shipping useful projects.",
+
 
     goal:
-      "To grow as a high-impact AI/ML and Data Science Engineer, building intelligent systems using Machine Learning, Deep Learning, and Generative AI while contributing to real-world AI innovation.",
+            "To gain hands-on experience through internships and projects in full-stack development and software engineering, while improving algorithmic and system design skills.",
+
 
     resumeLink:
-      "https://drive.google.com/file/d/1b0Nk6eZrVpsY13DTyjM_qVj3oN_8-q8E/view?usp=sharing",
+       "https://drive.google.com/file/d/1Q1pRZykFWkh3ilSe3K2rj5-ZVzAInHFG/view?usp=drive_link",
   },
 
-  social: {
-    github: "https://github.com/Suryanshtyagi12",
-    email: "tyagisurya.04@gmail.com",
-    linkedin: "https://www.linkedin.com/in/tyagi9/",
+ social: {
+    github: "https://github.com/Dhruv791",
+    email: "gunnutyagi49@gmail.com",
+    linkedin: "https://tinyurl.com/4fhnynbv",
     twitter: "",
     instagram: "",
     portfolio: "",
   },
 
   education: {
-    degree: "B.Tech in Computer Science",
+    degree: "Bachelor of Technology - Computer Science & Engineering",
     university: "Lovely Professional University",
     year: "2022 - 2026",
   },
@@ -38,64 +40,53 @@ export const CONFIG = {
   projects: [
     {
       id: 1,
-      title: "Multi-Agent Multimodal AI Assistant",
+      title: "Beach Room Booking Application",
       description:
-        "A multimodal AI assistant capable of extracting information from PDFs and images, and interacting through a chatbot interface. Built using LLMs, document parsers, and Streamlit.",
-      image: new URL('../assets/projects/multimodel.jpg', import.meta.url).href,
-      github: "https://github.com/Suryanshtyagi12/multi-agent-multimodal-assistant",
+        "Interactive frontend app to filter and display beach resort rooms based on user needs; responsive design and plans for auth/booking integration.",
+      image: new URL('../assets/projects/beach.png', import.meta.url).href,
+      github: "https://github.com/Dhruv791/Beach-Resort/tree/master",
       demo: "",
-      tags: ["LLM", "LangChain", "Agents", "Streamlit", "OCR", "PDF Parsing"],
+      tags: ["Frontend", "HTML", "CSS", "JavaScript"],
     },
 
-    {
+   {
       id: 2,
-      title: "Kasparro Agentic FB Analyst",
+      title: "Blood Bank Registration Portal",
       description:
-        "An agentic AI system that automates Facebook competitor analysis, content extraction, insights generation, and reporting for Kasparro. Uses LLM agents and automation pipelines.",
-      image: new URL('../assets/projects/kasporo.jpg', import.meta.url).href,
-      github: "https://github.com/Suryanshtyagi12/kasparro-agentic-fb-analyst-suryansh-tyagi",
+        "Portal to manage blood bank operations, donor data and exchange registrations. Backend implemented in PHP with MySQL for data storage.",
+      image: new URL('../assets/projects/blood.png', import.meta.url).href,
+      github: "https://github.com/Dhruv791/Blood-Bank",
       demo: "",
-      tags: ["Agentic AI", "LLM", "Automation", "Data Extraction", "NLP"],
+      tags: ["PHP", "MySQL", "Backend"],
     },
 
-    {
+      {
       id: 3,
-      title: "Customer Churn Prediction Using Deep Learning",
+      title: "Movie Recommender",
       description:
-        "An end-to-end deep learning pipeline using ANN for churn prediction. Includes preprocessing, EDA, feature engineering, hyperparameter tuning, TensorBoard monitoring, and Streamlit deployment.",
-      image: new URL('../assets/projects/customer_churn.jpg', import.meta.url).href,
-      github: "https://github.com/Suryanshtyagi12/customer-churn-prediction",
+        "Full-stack web app offering personalized movie suggestions using browsing history. Built with Node.js backend and modular frontend.",
+      image: new URL('../assets/projects/movie.jpg', import.meta.url).href,
+      github: "",
       demo: "",
-      tags: ["Deep Learning", "TensorFlow", "EDA", "ANN", "Streamlit"],
+      tags: ["Node.js", "Full-Stack", "Recommendations"],
     },
 
-    {
+     {
       id: 4,
-      title: "Heart Disease Prediction App",
+      title: "Tomato — Food Ordering Website",
       description:
-        "A Machine Learning web-app that predicts heart disease risk using medical parameters. Includes preprocessing, model training, evaluation, and Streamlit deployment.",
-      image: new URL('../assets/projects/heart_disease.png', import.meta.url).href,
-      github: "https://github.com/Suryanshtyagi12/Heart-Disease-Prediction",
-      demo: "https://huggingface.co/spaces/tyagisurya001/Heart_disease_preccdictor",
-      tags: ["Machine Learning", "Streamlit", "HuggingFace", "Data Science"],
-    },
-
-    {
-      id: 5,
-      title: "Vision Transformer (ViT) Built From Scratch",
-      description:
-        "Implemented a Vision Transformer architecture from scratch using PyTorch, including patch embeddings, attention, positional encodings, and classification pipeline.",
-      image: new URL('../assets/projects/vit.jpg', import.meta.url).href,
-      github: "https://github.com/Suryanshtyagi12/Coding-VIT-From-Scratch",
+        "Full-stack food ordering app with secure login/logout, online payment integration, and MongoDB-backed data storage.",
+      image: new URL('../assets/projects/tomato.png', import.meta.url).href,
+      github: "https://github.com/Dhruv791/Food_ordering_website",
       demo: "",
-      tags: ["Deep Learning", "PyTorch", "ViT", "Computer Vision"],
+      tags: ["Full-Stack", "MongoDB", "Authentication"],
     },
   ],
 
   // Keep original groups but also add the keys your Skills.jsx expects.
   skills: {
     // original groups
-    programming: ["Python", "C++", "SQL", "Java"],
+    programming: ["Java", "C++", "SQL", "JavaScript"],
 
     ml_frameworks: [
       "PyTorch",
@@ -153,26 +144,24 @@ export const CONFIG = {
       
       ].filter(Boolean), // keep safe if you don't have these
       ...[
-        "PyTorch",
-        "TensorFlow",
-        "Keras",
-        "Scikit-learn",
+         "Angular",
+        "React",
+        "Node.js",
+        "Express",
       ],
       // include GenAI libs too (optional)
       ...[
-        "HuggingFace Transformers",
-        "LangChain",
+        
       ],
     ],
 
     tools: [
       ...[
-        "Docker",
         "Git",
-        "Linux / Bash",
-        "FastAPI",
-        "Streamlit",
-        "HuggingFace Deployment",
+        "GitHub",
+        "Ubuntu",
+        "MongoDB",
+        "PostgreSQL",
       ],
     ],
 
@@ -182,7 +171,6 @@ export const CONFIG = {
         "OOP",
         "Operating Systems",
         "REST APIs",
-        "RAG Pipelines",
         "Prompt Engineering",
       ],
     ],
@@ -191,34 +179,34 @@ export const CONFIG = {
   certificates: [
     {
       id: 1,
-      title: "TensorFlow for AI/ML/DL",
-      issuer: "DeepLearning.ai / Coursera",
-      date: "2025",
-      image: new URL('../assets/certificates/tensorflow.png', import.meta.url).href,
-      link: "https://drive.google.com/file/d/1ArqbzSfd3gn4Ii92XZkTv6pqEORKj9iP/view?usp=sharing",
+      title: "Server Side JavaScript with Node.js",
+      issuer: "Coursera",
+      date: "2024",
+      image: new URL('../assets/certificates/JS.jpg', import.meta.url).href,
+      link: "https://drive.google.com/file/d/1fSecQa4Vh9xk8LNm2fdM0Mr5jLGkuYRZ/view?usp=drive_link",
     },
     {
       id: 2,
-      title: "Cloud Computing",
-      issuer: "NPTEL",
+      title: "Intoduction to Generative AI",
+      issuer: "Coursera",
       date: "2025",
-      image: new URL('../assets/certificates/cloud_nptel.png', import.meta.url).href,
-      link: "https://drive.google.com/file/d/1DzAU09AmJSuOwR26gcQ-QvJCl1-3zfpB/view?usp=sharing",
+      image: new URL('../assets/certificates/GEN.jpg', import.meta.url).href,
+      link: "https://drive.google.com/file/d/17miOnVEGEuivR4Ss4VCOnUyrvAQKoTtc/view?usp=drive_link",
     },
     {
       id: 3,
-      title: "Tableau Data Visualization",
-      issuer: "Salesforce / Coursera",
-      date: "2024",
-      image: new URL('../assets/certificates/tableau_cir.png', import.meta.url).href,
-      link: "https://drive.google.com/file/d/1DzAU09AmJSuOwR26gcQ-QvJCl1-3zfpB/view?usp=sharing",
+      title: "Data Structure And Aglorithm",
+      issuer: "IamNeo",
+      date: "2023",
+      image: new URL('../assets/certificates/DSA.jpg', import.meta.url).href,
+      link: "https://drive.google.com/file/d/1vnO9tdYB0PVyrFaKuV9Qv8E3LYE0QM2o/view?usp=drive_link",
     },
   ],
 
   emailjs: {
-    serviceId: "service_hg06vch",
-    templateId: "template_bg3w8hs",
-    publicKey: "louttENHUEfGnBowJ",
+    serviceId: "service_xar85lo",
+    templateId: "template_8xtq7zp",
+    publicKey: "ECMUQHGxuFH3Ox_Fk",
   },
 };
 
