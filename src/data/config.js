@@ -11,7 +11,7 @@ export const CONFIG = {
     profileImage: new URL('../assets/projects/Profile.jpg', import.meta.url).href,
 
     bio:
-            "Third-year B.Tech (CSE) student building web apps and data-driven projects. Experienced with frontend frameworks (Angular, React), backend (Node.js, PHP), and strong in Data Structures & Algorithms. I enjoy turning problems into clean, maintainable solutions and shipping useful projects.",
+            "B.Tech (CSE) student building web apps and data-driven projects. Experienced with frontend frameworks (Angular, React), backend (Node.js, PHP), and strong in Data Structures & Algorithms. I enjoy turning problems into clean, maintainable solutions and shipping useful projects.",
 
 
     goal:
