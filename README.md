@@ -66,7 +66,7 @@ resumeLink: "https://drive.google.com/file/d/YOUR_FILE_ID/view"
   title: "Your Project Name",
   description: "Brief description",
   image: "https://i.imgur.com/project1.png", // Upload screenshot
-  github: "https://github.com/Suryanshtyagi12/repo-name",
+  github: "https://github.com/Dhruv791/repo-name",
   demo: "https://your-demo-link.com", // Optional
   tags: ["Python", "React", "API"],
 }
@@ -87,8 +87,8 @@ resumeLink: "https://drive.google.com/file/d/YOUR_FILE_ID/view"
 #### Add Your Social Links:
 ```javascript
 linkedin: "https://linkedin.com/in/your-profile",
-github: "https://github.com/Suryanshtyagi12",
-email: "tyagisurya.04@gmail.com",
+github: "https://github.com/Dhruv791",
+email: "gunnutyagi049@gmail.com",
 ```
 
 ### 3. Set Up Contact Form (Optional)
