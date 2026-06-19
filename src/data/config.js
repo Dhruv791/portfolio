@@ -5,26 +5,26 @@
 export const CONFIG = {
   personal: {
     name: "Dhruv Tyagi",
-    tagline: "Full-Stack Developer | Problem Solver | B.Tech CSE Student",
+    tagline: "Full-Stack Developer | B.Tech CSE Graduate | Open to Work",
 
     // Use Vite-resolved URLs for assets inside src/assets
-    profileImage: new URL('../assets/projects/Profile.jpg', import.meta.url).href,
+    profileImage: new URL('../assets/projects/Dhruv.jpeg', import.meta.url).href,
 
     bio:
-            "Third-year B.Tech (CSE) student building web apps and data-driven projects. Experienced with frontend frameworks (Angular, React), backend (Node.js, PHP), and strong in Data Structures & Algorithms. I enjoy turning problems into clean, maintainable solutions and shipping useful projects.",
+            "B.Tech Computer Science graduate with hands-on experience building full-stack web applications and AI-driven projects using JavaScript, React.js, Node.js, MongoDB, Express.js, and FastAPI. I have a strong foundation in Data Structures & Algorithms and enjoy turning real-world problems into scalable, user-friendly solutions.",
 
 
     goal:
-            "To gain hands-on experience through internships and projects in full-stack development and software engineering, while improving algorithmic and system design skills.",
+            "To secure a full-time role as a Full-Stack Developer where I can apply my skills to build scalable, impactful software solutions while continuing to grow as an engineer.",
 
 
     resumeLink:
-       "https://drive.google.com/file/d/1Q1pRZykFWkh3ilSe3K2rj5-ZVzAInHFG/view?usp=drive_link",
+       "https://drive.google.com/file/d/1oYDmi-k2VdTkOcXBzG-7HKcdyg1xd6kW/view?usp=drive_link",
   },
 
  social: {
     github: "https://github.com/Dhruv791",
-    email: "gunnutyagi49@gmail.com",
+    email: "gunnutyagi049@gmail.com",
     linkedin: "https://tinyurl.com/4fhnynbv",
     twitter: "",
     instagram: "",
@@ -40,24 +40,25 @@ export const CONFIG = {
   projects: [
     {
       id: 1,
-      title: "Beach Room Booking Application",
+      title: "Mitti Mantra - AI-Powered Agricultural Decision Support System",
       description:
-        "Interactive frontend app to filter and display beach resort rooms based on user needs; responsive design and plans for auth/booking integration.",
-      image: new URL('../assets/projects/beach.png', import.meta.url).href,
-      github: "https://github.com/Dhruv791/Beach-Resort/tree/master",
+               "AI-powered agricultural platform with crop recommendation, disease detection, and irrigation scheduling. Built with React, Vite, and FastAPI, featuring a secure, multilingual UI.",
+      image: new URL('../assets/projects/AI-crop.png', import.meta.url).href,
+      github: "https://github.com/Dhruv791/Mitti-Mantra",
       demo: "",
-      tags: ["Frontend", "HTML", "CSS", "JavaScript"],
+      tags: ["React", "Vite", "FastAPI", "AI/ML"],
     },
 
    {
       id: 2,
-      title: "Blood Bank Registration Portal",
+      title: "Smart Blood Bank Registration Portal",
       description:
-        "Portal to manage blood bank operations, donor data and exchange registrations. Backend implemented in PHP with MySQL for data storage.",
-      image: new URL('../assets/projects/blood.png', import.meta.url).href,
-      github: "https://github.com/Dhruv791/Blood-Bank",
+                "Smart blood bank system to manage donors, inventory, and requests. Built with Node.js, Express, and MongoDB, with a Gemini AI assistant for alerts and guidance.",
+
+      image: new URL('../assets/projects/SmartBBMS.png', import.meta.url).href,
+      github: "https://github.com/Dhruv791/SmartBBMS",
       demo: "",
-      tags: ["PHP", "MySQL", "Backend"],
+      tags: ["React", "Node.js", "MongoDB", "Gemini AI"],
     },
 
       {
@@ -69,17 +70,6 @@ export const CONFIG = {
       github: "",
       demo: "",
       tags: ["Node.js", "Full-Stack", "Recommendations"],
-    },
-
-     {
-      id: 4,
-      title: "Tomato — Food Ordering Website",
-      description:
-        "Full-stack food ordering app with secure login/logout, online payment integration, and MongoDB-backed data storage.",
-      image: new URL('../assets/projects/tomato.png', import.meta.url).href,
-      github: "https://github.com/Dhruv791/Food_ordering_website",
-      demo: "",
-      tags: ["Full-Stack", "MongoDB", "Authentication"],
     },
   ],
 
@@ -136,7 +126,7 @@ export const CONFIG = {
     ],
 
     // keys expected by Skills.jsx — map/merge from above groups
-    languages: ["Python", "C++", "SQL", "Java"],
+    languages: ["Java", "JavaScript (ES6)", "Python", "PHP"],
 
     frameworks: [
       // include common JS/ML frameworks and genai libs to show up in the "Frameworks & Libraries" card
@@ -144,10 +134,11 @@ export const CONFIG = {
       
       ].filter(Boolean), // keep safe if you don't have these
       ...[
-         "Angular",
         "React",
+        "Angular",
         "Node.js",
-        "Express",
+        "Express.js",
+        "FastAPI"
       ],
       // include GenAI libs too (optional)
       ...[
@@ -159,8 +150,10 @@ export const CONFIG = {
       ...[
         "Git",
         "GitHub",
-        "Ubuntu",
+        "Postman",
+        "Vercel",
         "MongoDB",
+        "SQL",
         "PostgreSQL",
       ],
     ],
@@ -168,10 +161,10 @@ export const CONFIG = {
     concepts: [
       ...[
         "Data Structures & Algorithms",
-        "OOP",
-        "Operating Systems",
         "REST APIs",
-        "Prompt Engineering",
+        "JWT Authentication",
+        "API Integration",
+        "Problem Solving",
       ],
     ],
   },
