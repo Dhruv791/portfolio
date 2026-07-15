@@ -48,29 +48,28 @@ export const CONFIG = {
       demo: "",
       tags: ["React", "Vite", "FastAPI", "AI/ML"],
     },
-
+    
+{
+  id: 2,
+  title: "AI Interview Coach",
+  description:
+    "Full-stack AI-powered interview preparation platform that analyzes resumes, provides ATS feedback, generates mock interview questions, and tracks user performance using Google Gemini AI.",
+  image: new URL('../assets/projects/AI-Interview.png', import.meta.url).href,
+  github: "https://github.com/Dhruv791/AI-Interview-Coach",
+  demo: "https://ai-interview-coach-dhruvvv.vercel.app/",
+  tags: ["React", "FastAPI", "PostgreSQL", "Gemini AI"],
+},
    {
-      id: 2,
+      id: 3,
       title: "Smart Blood Bank Registration Portal",
       description:
-                "Smart blood bank system to manage donors, inventory, and requests. Built with Node.js, Express, and MongoDB, with a Gemini AI assistant for alerts and guidance.",
-
+      "Smart blood bank system to manage donors, inventory, and requests. Built with Node.js, Express, and MongoDB, with a Gemini AI assistant for alerts and guidance.",
       image: new URL('../assets/projects/SmartBBMS.png', import.meta.url).href,
       github: "https://github.com/Dhruv791/SmartBBMS",
       demo: "",
       tags: ["React", "Node.js", "MongoDB", "Gemini AI"],
     },
 
-      {
-      id: 3,
-      title: "Movie Recommender",
-      description:
-        "Full-stack web app offering personalized movie suggestions using browsing history. Built with Node.js backend and modular frontend.",
-      image: new URL('../assets/projects/movie.jpg', import.meta.url).href,
-      github: "",
-      demo: "",
-      tags: ["Node.js", "Full-Stack", "Recommendations"],
-    },
   ],
 
   // Keep original groups but also add the keys your Skills.jsx expects.
