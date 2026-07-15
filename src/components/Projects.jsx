@@ -1,170 +1,197 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Github, ExternalLink } from 'lucide-react';
+import { Github, ExternalLink, ArrowUpRight } from 'lucide-react';
 import CONFIG from '../data/config';
+import {
+  GLASS_CARD,
+  GLASS_CARD_HOVER,
+  SECTION_PADDING,
+  CONTAINER,
+  HEADING_GRADIENT,
+  ACCENT_BAR,
+  TECH_PILL,
+  BTN_PRIMARY,
+  BTN_OUTLINE,
+  BG_ORB_1,
+  BG_ORB_2,
+  BG_ORB_3,
+} from '../designSystem';
+import {
+  staggerContainer,
+  fadeUp,
+  cardReveal,
+  hoverLift,
+  hoverButton,
+  tapButton,
+  floatAnimation,
+} from '../motionVariants';
 
-const Projects = ({ darkMode }) => {
+// Project image mockup with browser-chrome frame
+const BrowserMockup = ({ src, alt, flip }) => (
+  <motion.div
+    animate={floatAnimation}
+    className={`relative w-full max-w-[520px] ${flip ? 'md:order-first' : ''}`}
+  >
+    {/* Glow behind mockup */}
+    <div className="absolute inset-0 -m-4 bg-gradient-to-br from-indigo-600/20 to-violet-600/10 rounded-3xl blur-2xl" />
+
+    {/* Browser chrome */}
+    <div className={`relative ${GLASS_CARD} overflow-hidden`}>
+      {/* Browser top bar */}
+      <div className="flex items-center gap-1.5 px-4 py-3 border-b border-white/[0.06] bg-white/[0.03]">
+        <div className="w-3 h-3 rounded-full bg-red-500/70" />
+        <div className="w-3 h-3 rounded-full bg-amber-500/70" />
+        <div className="w-3 h-3 rounded-full bg-emerald-500/70" />
+        <div className="ml-3 flex-1 px-3 py-1 rounded bg-white/[0.06] text-slate-500 text-xs font-mono truncate">
+          localhost:5173
+        </div>
+      </div>
+
+      {/* Screenshot */}
+      <div className="relative overflow-hidden aspect-[16/10]">
+        <motion.img
+          whileHover={{ scale: 1.04 }}
+          transition={{ duration: 0.4, ease: 'easeOut' }}
+          src={src}
+          alt={alt}
+          className="w-full h-full object-cover"
+          loading="lazy"
+        />
+        {/* Subtle inner shadow */}
+        <div className="absolute inset-0 shadow-[inset_0_0_30px_rgba(0,0,0,0.3)] pointer-events-none" />
+      </div>
+    </div>
+  </motion.div>
+);
+
+const Projects = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, scale: 0.9 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.5 },
-    },
-  };
+  const isInView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
     <section
       id="projects"
       ref={ref}
-      className={`py-20 ${
-        darkMode ? 'bg-gray-900' : 'bg-white'
-      }`}
+      className={`section-bg-alt ${SECTION_PADDING} relative`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Shared background decoration */}
+      <div className={BG_ORB_1} />
+      <div className={BG_ORB_2} />
+      <div className={BG_ORB_3} />
+      <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none" />
+
+      <div className={`${CONTAINER} relative z-10`}>
         <motion.div
-          variants={containerVariants}
+          variants={staggerContainer}
           initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
+          animate={isInView ? 'visible' : 'hidden'}
         >
-          {/* Section Title */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2
-              className={`text-4xl md:text-5xl font-bold mb-4 ${
-                darkMode ? 'text-white' : 'text-gray-900'
-              }`}
-            >
-              Featured <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Projects</span>
+          {/* ── Section Title ──────────────────────────────────────────────── */}
+          <motion.div variants={fadeUp} className="text-center mb-20">
+            <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-indigo-400 mb-3">
+              Selected work
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold">
+              Featured{' '}
+              <span className={HEADING_GRADIENT}>Projects</span>
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-4" />
-            <p className={`text-lg ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+            <div className={ACCENT_BAR} />
+            <p className="mt-4 text-slate-400 text-base max-w-xl mx-auto">
               Here are some of my recent works
             </p>
           </motion.div>
 
-          {/* Projects Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
-            {CONFIG.projects.map((project) => (
-              <motion.div
-                key={project.id}
-                variants={itemVariants}
-                whileHover={{ y: -10 }}
-                className={`rounded-xl overflow-hidden shadow-xl ${
-                  darkMode
-                    ? 'bg-gray-800 border border-gray-700'
-                    : 'bg-white border border-gray-200'
-                }`}
-              >
-                {/* Project Image */}
-                <div className="relative h-48 overflow-hidden group">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-
-                {/* Project Content */}
-                <div className="p-6">
-                  <h3
-                    className={`text-2xl font-bold mb-3 ${
-                      darkMode ? 'text-white' : 'text-gray-900'
-                    }`}
-                  >
-                    {project.title}
-                  </h3>
-
-                  <p
-                    className={`mb-4 ${
-                      darkMode ? 'text-gray-300' : 'text-gray-700'
-                    }`}
-                  >
-                    {project.description}
-                  </p>
-
-                  {/* Tech Tags */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className={`px-3 py-1 text-sm rounded-full ${
-                          darkMode
-                            ? 'bg-gray-700 text-gray-300'
-                            : 'bg-gray-100 text-gray-700'
-                        }`}
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Action Buttons */}
-                  <div className="flex gap-4">
-                    <motion.a
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary to-accent text-white rounded-lg font-semibold hover:shadow-lg transition-all"
+          {/* ── Case Study List ────────────────────────────────────────────── */}
+          <div className="space-y-28">
+            {CONFIG.projects.map((project, index) => {
+              const isEven = index % 2 === 0; // even = details left, image right
+              return (
+                <motion.div
+                  key={project.id}
+                  variants={cardReveal}
+                  className={`grid md:grid-cols-[5fr_6fr] gap-10 lg:gap-16 items-center ${
+                    !isEven ? 'md:[&>*:first-child]:order-last' : ''
+                  }`}
+                >
+                  {/* ── LEFT — Project details ─────────────────────────────── */}
+                  <motion.div variants={staggerContainer} className="flex flex-col gap-5">
+                    {/* Project number */}
+                    <motion.span
+                      variants={fadeUp}
+                      className="text-7xl font-black text-white/[0.04] leading-none select-none"
                     >
-                      <Github size={18} />
-                      Code
-                    </motion.a>
+                      {String(index + 1).padStart(2, '0')}
+                    </motion.span>
 
-                    {project.demo && (
+                    {/* Title */}
+                    <motion.div variants={fadeUp} className="-mt-8">
+                      <h3 className="text-2xl sm:text-3xl font-bold text-white leading-tight">
+                        {project.title}
+                      </h3>
+                    </motion.div>
+
+                    {/* Description */}
+                    <motion.p variants={fadeUp} className="text-slate-400 leading-relaxed">
+                      {project.description}
+                    </motion.p>
+
+                    {/* Tech Pills */}
+                    <motion.div variants={fadeUp} className="flex flex-wrap gap-2">
+                      {project.tags.map((tag) => (
+                        <span key={tag} className={TECH_PILL}>{tag}</span>
+                      ))}
+                    </motion.div>
+
+                    {/* Action Buttons */}
+                    <motion.div variants={fadeUp} className="flex flex-wrap gap-3 pt-2">
                       <motion.a
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        href={project.demo}
+                        whileHover={hoverButton}
+                        whileTap={tapButton}
+                        href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`flex items-center gap-2 px-4 py-2 rounded-lg font-semibold border-2 transition-all ${
-                          darkMode
-                            ? 'border-white text-white hover:bg-white hover:text-gray-900'
-                            : 'border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white'
-                        }`}
+                        className={BTN_PRIMARY}
                       >
-                        <ExternalLink size={18} />
-                        Demo
+                        <Github size={18} /> View Code
                       </motion.a>
-                    )}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+
+                      {project.demo && (
+                        <motion.a
+                          whileHover={hoverButton}
+                          whileTap={tapButton}
+                          href={project.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={BTN_OUTLINE}
+                        >
+                          <ExternalLink size={18} /> Live Demo
+                        </motion.a>
+                      )}
+                    </motion.div>
+                  </motion.div>
+
+                  {/* ── RIGHT — Browser Mockup ─────────────────────────────── */}
+                  <BrowserMockup
+                    src={project.image}
+                    alt={project.title}
+                    flip={!isEven}
+                  />
+                </motion.div>
+              );
+            })}
           </div>
 
-          {/* Call to Action */}
-          <motion.div
-            variants={itemVariants}
-            className="text-center mt-12"
-          >
+          {/* ── View More CTA ──────────────────────────────────────────────── */}
+          <motion.div variants={fadeUp} className="text-center mt-20">
             <motion.a
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={hoverButton}
+              whileTap={tapButton}
               href={CONFIG.social.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-primary to-accent text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-all"
+              className={BTN_PRIMARY}
             >
-              <Github size={20} />
-              View More on GitHub
+              <Github size={18} /> View More on GitHub <ArrowUpRight size={16} />
             </motion.a>
           </motion.div>
         </motion.div>

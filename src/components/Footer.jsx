@@ -1,102 +1,82 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Heart, Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail, Heart } from 'lucide-react';
 import CONFIG from '../data/config';
+import { HEADING_GRADIENT, CONTAINER } from '../designSystem';
+import { fadeUp } from '../motionVariants';
 
-const Footer = ({ darkMode }) => {
+const FOOTER_LINKS = ['Home', 'About', 'Projects', 'Skills', 'Certificates', 'Contact'];
+
+const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer
-      className={`py-8 ${
-        darkMode ? 'bg-gray-900 border-t border-gray-800' : 'bg-gray-100 border-t border-gray-200'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          {/* Left: Copyright */}
+    <footer className="relative bg-[#030710] border-t border-white/[0.06]">
+      {/* Top gradient line */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-500/40 to-transparent" />
+
+      <div className={`${CONTAINER} py-10`}>
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+
+          {/* Logo + copyright */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className={`text-center md:text-left ${
-              darkMode ? 'text-gray-400' : 'text-gray-600'
-            }`}
+            className="text-center md:text-left"
           >
-            <p>
-              © {currentYear} <span className="font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">{CONFIG.personal.name}</span>
-            </p>
-            <p className="text-sm flex items-center justify-center md:justify-start gap-1">
-           
+            <p className={`text-xl font-black tracking-tight ${HEADING_GRADIENT} mb-1`}>DT</p>
+            <p className="text-slate-500 text-sm">
+              © {currentYear}{' '}
+              <span className="text-slate-400 font-medium">{CONFIG.personal.name}</span>
+              . All rights reserved.
             </p>
           </motion.div>
 
-          {/* Center: Quick Links */}
+          {/* Quick Links */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex gap-6"
+            transition={{ delay: 0.1 }}
+            className="flex flex-wrap justify-center gap-x-6 gap-y-2"
           >
-            {['Home', 'About', 'Projects', 'Contact'].map((link) => (
+            {FOOTER_LINKS.map((link) => (
               <a
                 key={link}
                 href={`#${link.toLowerCase()}`}
-                className={`hover:text-primary transition-colors ${
-                  darkMode ? 'text-gray-400' : 'text-gray-600'
-                }`}
+                className="text-slate-500 hover:text-indigo-400 text-sm transition-colors duration-200"
               >
                 {link}
               </a>
             ))}
           </motion.div>
 
-          {/* Right: Social Links */}
+          {/* Social Icons */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex gap-4"
+            transition={{ delay: 0.2 }}
+            className="flex gap-3"
           >
-            <motion.a
-              whileHover={{ scale: 1.1, rotate: 5 }}
-              href={CONFIG.social.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`p-2 rounded-full transition-colors ${
-                darkMode
-                  ? 'bg-gray-800 text-gray-400 hover:bg-primary hover:text-white'
-                  : 'bg-gray-200 text-gray-600 hover:bg-primary hover:text-white'
-              }`}
-            >
-              <Github size={20} />
-            </motion.a>
-            
-            <motion.a
-              whileHover={{ scale: 1.1, rotate: 5 }}
-              href={CONFIG.social.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`p-2 rounded-full transition-colors ${
-                darkMode
-                  ? 'bg-gray-800 text-gray-400 hover:bg-primary hover:text-white'
-                  : 'bg-gray-200 text-gray-600 hover:bg-primary hover:text-white'
-              }`}
-            >
-              <Linkedin size={20} />
-            </motion.a>
-            
-            <motion.a
-              whileHover={{ scale: 1.1, rotate: 5 }}
-              href={`mailto:${CONFIG.social.email}`}
-              className={`p-2 rounded-full transition-colors ${
-                darkMode
-                  ? 'bg-gray-800 text-gray-400 hover:bg-primary hover:text-white'
-                  : 'bg-gray-200 text-gray-600 hover:bg-primary hover:text-white'
-              }`}
-            >
-              <Mail size={20} />
-            </motion.a>
+            {[
+              { href: CONFIG.social.github, Icon: Github, label: 'GitHub' },
+              { href: CONFIG.social.linkedin, Icon: Linkedin, label: 'LinkedIn' },
+              { href: `mailto:${CONFIG.social.email}`, Icon: Mail, label: 'Email' },
+            ].map(({ href, Icon, label }) => (
+              <motion.a
+                key={label}
+                whileHover={{ scale: 1.12, y: -2 }}
+                href={href}
+                target={label !== 'Email' ? '_blank' : undefined}
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="p-2.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-slate-400 hover:text-indigo-400 hover:border-indigo-500/30 transition-all duration-200"
+              >
+                <Icon size={18} />
+              </motion.a>
+            ))}
           </motion.div>
         </div>
       </div>

@@ -2,184 +2,121 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Award, ExternalLink } from 'lucide-react';
 import CONFIG from '../data/config';
+import {
+  GLASS_CARD,
+  GLASS_CARD_HOVER,
+  SECTION_PADDING,
+  CONTAINER,
+  HEADING_GRADIENT,
+  ACCENT_BAR,
+  BTN_PRIMARY,
+  BG_ORB_1,
+  BG_ORB_2,
+} from '../designSystem';
+import { staggerContainer, fadeUp, cardReveal, hoverLift, hoverButton, tapButton } from '../motionVariants';
 
-const Certificates = ({ darkMode }) => {
+const Certificates = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 },
-    },
-  };
+  const isInView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
     <section
       id="certificates"
       ref={ref}
-      className={`py-20 ${
-        darkMode ? 'bg-gray-800' : 'bg-gray-50'
-      }`}
+      className={`section-bg ${SECTION_PADDING} relative`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Shared background decoration */}
+      <div className={BG_ORB_1} />
+      <div className={BG_ORB_2} />
+      <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none" />
+
+      <div className={`${CONTAINER} relative z-10`}>
         <motion.div
-          variants={containerVariants}
+          variants={staggerContainer}
           initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
+          animate={isInView ? 'visible' : 'hidden'}
         >
-          {/* Section Title */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2
-              className={`text-4xl md:text-5xl font-bold mb-4 ${
-                darkMode ? 'text-white' : 'text-gray-900'
-              }`}
-            >
-              Training & <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Certificates</span>
+          {/* ── Section Title ──────────────────────────────────────────────── */}
+          <motion.div variants={fadeUp} className="text-center mb-16">
+            <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-indigo-400 mb-3">
+              Credentials
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold">
+              Training &{' '}
+              <span className={HEADING_GRADIENT}>Certificates</span>
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-4" />
-            <p className={`text-lg ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+            <div className={ACCENT_BAR} />
+            <p className="mt-4 text-slate-400 text-base max-w-xl mx-auto">
               Professional certifications and completed training programs
             </p>
           </motion.div>
 
-          {/* Certificates Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* ── Certificates Grid ──────────────────────────────────────────── */}
+          <motion.div
+            variants={staggerContainer}
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
             {(CONFIG.certificates ?? []).map((cert) => (
               <motion.div
                 key={cert.id}
-                variants={itemVariants}
-                whileHover={{ y: -10, scale: 1.02 }}
-                className={`rounded-xl overflow-hidden shadow-xl ${
-                  darkMode
-                    ? 'bg-gray-900 border border-gray-700'
-                    : 'bg-white border border-gray-200'
-                }`}
+                variants={cardReveal}
+                whileHover={hoverLift}
+                className={`${GLASS_CARD} ${GLASS_CARD_HOVER} overflow-hidden flex flex-col`}
               >
                 {/* Certificate Image */}
-                <div className="relative h-40 overflow-hidden bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center group">
-                  <img
+                <div className="relative h-44 overflow-hidden bg-gradient-to-br from-indigo-900/30 to-violet-900/20 group">
+                  <motion.img
+                    whileHover={{ scale: 1.06 }}
+                    transition={{ duration: 0.4, ease: 'easeOut' }}
                     src={cert.image}
                     alt={cert.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-full object-cover"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  {/* Hover overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
 
                 {/* Certificate Content */}
-                <div className="p-6">
-                  {/* Award Icon */}
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="p-2 bg-gradient-to-r from-primary to-accent rounded-lg">
-                      <Award className="text-white" size={20} />
+                <div className="p-5 flex flex-col flex-1">
+                  {/* Icon + Date row */}
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-gradient-to-br from-indigo-600/30 to-violet-600/30 border border-indigo-500/20 text-indigo-400">
+                        <Award size={16} />
+                      </div>
+                      <span className="text-xs font-semibold text-indigo-300 uppercase tracking-wider">
+                        {cert.issuer}
+                      </span>
                     </div>
-                    <span
-                      className={`text-sm font-semibold ${
-                        darkMode ? 'text-gray-400' : 'text-gray-600'
-                      }`}
-                    >
+                    <span className="text-xs text-slate-500 border border-white/10 px-2 py-0.5 rounded-full">
                       {cert.date}
                     </span>
                   </div>
 
                   {/* Title */}
-                  <h3
-                    className={`text-xl font-bold mb-2 ${
-                      darkMode ? 'text-white' : 'text-gray-900'
-                    }`}
-                  >
+                  <h3 className="text-base font-semibold text-white leading-snug flex-1 mb-4">
                     {cert.title}
                   </h3>
 
-                  {/* Issuer */}
-                  <p
-                    className={`text-sm mb-4 ${
-                      darkMode ? 'text-gray-400' : 'text-gray-600'
-                    }`}
-                  >
-                    Issued by: <span className="font-semibold">{cert.issuer}</span>
-                  </p>
-
-                  {/* View Certificate Link */}
+                  {/* View Certificate Button */}
                   {cert.link && (
                     <motion.a
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
+                      whileHover={hoverButton}
+                      whileTap={tapButton}
                       href={cert.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 w-full py-2 bg-gradient-to-r from-primary to-accent text-white rounded-lg font-semibold hover:shadow-lg transition-all"
+                      className={`${BTN_PRIMARY} w-full justify-center`}
                     >
-                      <ExternalLink size={16} />
+                      <ExternalLink size={15} />
                       View Certificate
                     </motion.a>
                   )}
                 </div>
               </motion.div>
             ))}
-          </div>
-
-          {/*
-            Achievement Summary removed as requested.
-            If you want to re-enable it later, uncomment the block below.
-          
-          <motion.div
-            variants={itemVariants}
-            className={`mt-12 text-center p-8 rounded-xl ${
-              darkMode
-                ? 'bg-gradient-to-r from-gray-800 to-gray-900'
-                : 'bg-gradient-to-r from-purple-50 to-blue-50'
-            }`}
-          >
-            <div className="flex flex-wrap justify-center gap-8">
-              <div className="text-center">
-                <div
-                  className={`text-4xl font-bold mb-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent`}
-                >
-                  {CONFIG.certificates.length}+
-                </div>
-                <div className={darkMode ? 'text-gray-400' : 'text-gray-600'}>
-                  Certifications
-                </div>
-              </div>
-              <div className="text-center">
-                <div
-                  className={`text-4xl font-bold mb-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent`}
-                >
-                  {CONFIG.projects.length}+
-                </div>
-                <div className={darkMode ? 'text-gray-400' : 'text-gray-600'}>
-                  
-                </div>
-              </div>
-              <div className="text-center">
-                <div
-                  className={`text-4xl font-bold mb-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent`}
-                >
-                
-                </div>
-                <div className={darkMode ? 'text-gray-400' : 'text-gray-600'}>
-              
-                </div>
-              </div>
-            </div>
           </motion.div>
-          
-          */}
-
         </motion.div>
       </div>
     </section>

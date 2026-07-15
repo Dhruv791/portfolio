@@ -10,8 +10,10 @@ export const CONFIG = {
     // Use Vite-resolved URLs for assets inside src/assets
     profileImage: new URL('../assets/projects/Dhruv.jpeg', import.meta.url).href,
 
+    homeBio: "B.Tech CSE graduate building full-stack and AI-driven applications — from crop advisory systems to AI interview coaches — using React, Node.js, and FastAPI",
+
     bio:
-            "B.Tech Computer Science graduate with hands-on experience building full-stack web applications and AI-driven projects using JavaScript, React.js, Node.js, MongoDB, Express.js, and FastAPI. I have a strong foundation in Data Structures & Algorithms and enjoy turning real-world problems into scalable, user-friendly solutions.",
+            "I'm a B.Tech Computer Science graduate who builds full-stack and AI-driven applications end to end — from backend architecture to the user-facing interface. My recent work spans an AI-powered agricultural advisory platform, a full-stack AI interview coach, and a smart blood bank management system, using React, Node.js, FastAPI, and MongoDB.",
 
 
     goal:
@@ -78,22 +80,11 @@ export const CONFIG = {
     programming: ["Java", "C++", "SQL", "JavaScript"],
 
     ml_frameworks: [
-      "PyTorch",
-      "TensorFlow",
-      "Keras",
-      "Scikit-learn",
-      "XGBoost",
-      "OpenCV",
-    ],
-
-    genai: [
-      "HuggingFace Transformers",
-      "LangChain",
       "Prompt Engineering",
-      "RAG Pipelines",
-      "Vector Databases (FAISS, ChromaDB)",
-      "LLM Fine-tuning",
-      "Multi-Agent Systems",
+      "Google Gemini API",
+      "OpenAI API",
+      "AI Integration",
+      "XGBoost",
     ],
 
     data_science: [

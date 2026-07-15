@@ -1,36 +1,44 @@
 import React, { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import {
-  Mail,
-  MapPin,
-  Send,
-  Github,
-  Linkedin,
-  CheckCircle,
-  AlertCircle,
+  Mail, MapPin, Send, Github, Linkedin,
+  CheckCircle, AlertCircle,
 } from 'lucide-react';
 import emailjs from 'emailjs-com';
 import CONFIG from '../data/config';
+import {
+  GLASS_CARD,
+  GLASS_CARD_HOVER,
+  SECTION_PADDING,
+  CONTAINER,
+  HEADING_GRADIENT,
+  ACCENT_BAR,
+  BTN_PRIMARY,
+  ICON_BADGE,
+  BG_ORB_1,
+  BG_ORB_2,
+  BG_ORB_3,
+} from '../designSystem';
+import {
+  staggerContainer,
+  fadeUp,
+  cardReveal,
+  hoverLift,
+  hoverButton,
+  tapButton,
+  hoverGlow,
+} from '../motionVariants';
 
-const Contact = ({ darkMode }) => {
+const Contact = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: '-80px' });
 
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-  });
-
+  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
   const [status, setStatus] = useState({ type: '', message: '' });
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
@@ -50,154 +58,153 @@ const Contact = ({ darkMode }) => {
         },
         CONFIG.emailjs.publicKey
       );
-
-      setStatus({
-        type: 'success',
-        message: "Message sent successfully! I'll get back to you soon.",
-      });
-
+      setStatus({ type: 'success', message: "Message sent successfully! I'll get back to you soon." });
       setFormData({ name: '', email: '', subject: '', message: '' });
-    } catch (error) {
+    } catch {
       setStatus({
         type: 'error',
-        message:
-          'Failed to send message. Please email me directly at ' +
-          CONFIG.social.email,
+        message: `Failed to send message. Please email me directly at ${CONFIG.social.email}`,
       });
     } finally {
       setLoading(false);
     }
   };
 
-  // 🔹 INPUT STYLE (REUSED)
-  const inputClass = `w-full p-3 rounded border focus:outline-none focus:ring-2 focus:ring-primary transition
-    ${
-      darkMode
-        ? 'bg-gray-800 border-gray-700 text-white placeholder-gray-400'
-        : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
-    }`;
+  // Shared glass input style
+  const inputClass =
+    'w-full px-4 py-3 rounded-xl text-white placeholder-slate-500 text-sm ' +
+    'bg-white/[0.04] border border-white/[0.08] ' +
+    'focus:outline-none focus:border-indigo-500/50 focus:bg-white/[0.07] ' +
+    'transition-all duration-200';
 
   return (
     <section
       id="contact"
       ref={ref}
-      className={`py-20 ${darkMode ? 'bg-gray-800' : 'bg-gray-50'}`}
+      className={`section-bg-alt ${SECTION_PADDING} relative`}
     >
-      <div className="max-w-7xl mx-auto px-4">
+      {/* Shared background decoration */}
+      <div className={BG_ORB_1} />
+      <div className={BG_ORB_2} />
+      <div className={BG_ORB_3} />
+      <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none" />
+
+      <div className={`${CONTAINER} relative z-10`}>
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
+          variants={staggerContainer}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
         >
-          <div className="text-center mb-16">
-            <h2
-              className={`text-4xl font-bold ${
-                darkMode ? 'text-white' : 'text-gray-900'
-              }`}
-            >
-              Get In <span className="text-primary">Touch</span>
+          {/* ── Section Title ──────────────────────────────────────────────── */}
+          <motion.div variants={fadeUp} className="text-center mb-16">
+            <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-indigo-400 mb-3">
+              Reach out
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold">
+              Get In{' '}
+              <span className={HEADING_GRADIENT}>Touch</span>
             </h2>
-            <p
-              className={`mt-4 ${
-                darkMode ? 'text-gray-400' : 'text-gray-600'
-              }`}
-            >
-              Let’s discuss opportunities or collaborations
+            <div className={ACCENT_BAR} />
+            <p className="mt-4 text-slate-400 text-base max-w-xl mx-auto">
+              Let's discuss opportunities or collaborations
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* LEFT */}
-            <div className="space-y-8">
-              <div>
-                <h3
-                  className={`text-2xl font-bold mb-6 ${
-                    darkMode ? 'text-white' : 'text-gray-900'
-                  }`}
+          {/* ── Two-Column Layout ──────────────────────────────────────────── */}
+          <div className="grid md:grid-cols-[5fr_7fr] gap-10">
+
+            {/* ── LEFT — Info ────────────────────────────────────────────── */}
+            <motion.div variants={staggerContainer} className="flex flex-col gap-5">
+
+              {/* Contact Info Cards */}
+              {[
+                {
+                  Icon: Mail,
+                  label: 'Email',
+                  value: CONFIG.social.email,
+                  href: `mailto:${CONFIG.social.email}`,
+                },
+                {
+                  Icon: MapPin,
+                  label: 'Location',
+                  value: 'Punjab, India',
+                  href: null,
+                },
+              ].map(({ Icon, label, value, href }) => (
+                <motion.div
+                  key={label}
+                  variants={cardReveal}
+                  whileHover={hoverLift}
+                  className={`${GLASS_CARD} ${GLASS_CARD_HOVER} p-5 flex items-center gap-4`}
                 >
-                  Contact Information
-                </h3>
-
-                <div className="space-y-4">
-                  <div
-                    className={`flex items-center gap-4 p-4 rounded-xl ${
-                      darkMode ? 'bg-gray-900' : 'bg-white'
-                    }`}
-                  >
-                    <Mail className="text-primary" />
-                    <a
-                      href={`mailto:${CONFIG.social.email}`}
-                      className={`font-semibold ${
-                        darkMode ? 'text-white' : 'text-gray-900'
-                      }`}
-                    >
-                      {CONFIG.social.email}
-                    </a>
+                  <div className={ICON_BADGE}>
+                    <Icon size={20} />
                   </div>
-
-                  <div
-                    className={`flex items-center gap-4 p-4 rounded-xl ${
-                      darkMode ? 'bg-gray-900' : 'bg-white'
-                    }`}
-                  >
-                    <MapPin className="text-primary" />
-                    <span
-                      className={`font-semibold ${
-                        darkMode ? 'text-white' : 'text-gray-900'
-                      }`}
-                    >
-                      Punjab, India
-                    </span>
+                  <div>
+                    <p className="text-xs text-slate-500 uppercase tracking-wider mb-0.5">{label}</p>
+                    {href ? (
+                      <a href={href} className="text-white font-medium hover:text-indigo-400 transition-colors text-sm">
+                        {value}
+                      </a>
+                    ) : (
+                      <p className="text-white font-medium text-sm">{value}</p>
+                    )}
                   </div>
+                </motion.div>
+              ))}
+
+              {/* Social Links */}
+              <motion.div variants={fadeUp} className="mt-2">
+                <p className="text-xs text-slate-500 uppercase tracking-wider mb-3">Connect with me</p>
+                <div className="flex gap-3">
+                  {[
+                    { href: CONFIG.social.github, Icon: Github, label: 'GitHub' },
+                    { href: CONFIG.social.linkedin, Icon: Linkedin, label: 'LinkedIn' },
+                  ].map(({ href, Icon, label }) => (
+                    <motion.a
+                      key={label}
+                      whileHover={hoverGlow}
+                      href={href}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={label}
+                      className={`${GLASS_CARD} ${GLASS_CARD_HOVER} p-3 text-slate-400 hover:text-indigo-400 transition-colors`}
+                    >
+                      <Icon size={22} />
+                    </motion.a>
+                  ))}
                 </div>
-              </div>
+              </motion.div>
+            </motion.div>
 
-              <div className="flex gap-4">
-                <a
-                  href={CONFIG.social.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="p-4 bg-primary text-white rounded-xl"
-                >
-                  <Github />
-                </a>
-                <a
-                  href={CONFIG.social.linkedin}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="p-4 bg-primary text-white rounded-xl"
-                >
-                  <Linkedin />
-                </a>
-              </div>
-            </div>
-
-            {/* RIGHT FORM */}
-            <form
-              onSubmit={handleSubmit}
-              className={`p-8 rounded-xl shadow-xl ${
-                darkMode ? 'bg-gray-900' : 'bg-white'
-              }`}
-            >
-              <div className="space-y-4">
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  placeholder="Your Name"
-                  className={inputClass}
-                />
-
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  placeholder="Your Email"
-                  className={inputClass}
-                />
+            {/* ── RIGHT — Contact Form ────────────────────────────────────── */}
+            <motion.div variants={cardReveal}>
+              <form
+                onSubmit={handleSubmit}
+                className={`${GLASS_CARD} p-7 flex flex-col gap-4`}
+              >
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    placeholder="Your Name"
+                    className={inputClass}
+                    id="contact-name"
+                  />
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    placeholder="Your Email"
+                    className={inputClass}
+                    id="contact-email"
+                  />
+                </div>
 
                 <input
                   type="text"
@@ -206,6 +213,7 @@ const Contact = ({ darkMode }) => {
                   onChange={handleChange}
                   placeholder="Subject"
                   className={inputClass}
+                  id="contact-subject"
                 />
 
                 <textarea
@@ -215,41 +223,52 @@ const Contact = ({ darkMode }) => {
                   required
                   rows={5}
                   placeholder="Your Message"
-                  className={inputClass}
+                  className={`${inputClass} resize-none`}
+                  id="contact-message"
                 />
 
+                {/* Status */}
                 {status.message && (
-                  <div
-                    className={`flex items-center gap-2 p-3 rounded ${
+                  <motion.div
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className={`flex items-center gap-2 p-3 rounded-xl text-sm ${
                       status.type === 'success'
-                        ? 'bg-green-100 text-green-700'
-                        : 'bg-red-100 text-red-700'
+                        ? 'bg-emerald-500/10 border border-emerald-500/20 text-emerald-400'
+                        : 'bg-red-500/10 border border-red-500/20 text-red-400'
                     }`}
                   >
-                    {status.type === 'success' ? (
-                      <CheckCircle size={18} />
-                    ) : (
-                      <AlertCircle size={18} />
-                    )}
+                    {status.type === 'success'
+                      ? <CheckCircle size={16} />
+                      : <AlertCircle size={16} />
+                    }
                     {status.message}
-                  </div>
+                  </motion.div>
                 )}
 
-                <button
+                {/* Submit */}
+                <motion.button
+                  whileHover={hoverButton}
+                  whileTap={tapButton}
                   type="submit"
                   disabled={loading}
-                  className="w-full bg-primary text-white py-3 rounded flex justify-center gap-2"
+                  id="contact-submit"
+                  className={`${BTN_PRIMARY} w-full justify-center ${loading ? 'opacity-60 cursor-not-allowed' : ''}`}
                 >
                   {loading ? (
-                    'Sending...'
+                    <span className="flex items-center gap-2">
+                      <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
+                      </svg>
+                      Sending...
+                    </span>
                   ) : (
-                    <>
-                      <Send size={18} /> Send Message
-                    </>
+                    <><Send size={17} /> Send Message</>
                   )}
-                </button>
-              </div>
-            </form>
+                </motion.button>
+              </form>
+            </motion.div>
           </div>
         </motion.div>
       </div>
