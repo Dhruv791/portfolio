@@ -19,7 +19,7 @@ export const CONFIG = {
 
 
     resumeLink:
-       "https://drive.google.com/file/d/13vxN4XHKdjeEytXqBtl_UqUSg7vU-XTJ/view?usp=drive_link",
+       "https://drive.google.com/file/d/1YlPkPwzD5J0edXgNSOkTLQ_6TviImrE1/view?usp=drive_link",
   },
 
  social: {
