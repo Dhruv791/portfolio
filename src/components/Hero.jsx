@@ -69,7 +69,7 @@ const Hero = () => {
           >
             {/* Greeting */}
             <motion.div variants={heroItem} className="mb-2">
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-300 text-sm font-medium tracking-wide">
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-indigo-500/20 dark:border-indigo-500/30 bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-300 text-sm font-medium tracking-wide">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                 Available for opportunities
               </span>
@@ -80,8 +80,8 @@ const Hero = () => {
               variants={heroItem}
               className="mt-4 text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.08] tracking-tight"
             >
-              <span className="text-white">Hi,&nbsp;</span>
-              <span className="text-slate-400">I'm</span>
+              <span className="text-slate-900 dark:text-white">Hi,&nbsp;</span>
+              <span className="text-slate-500 dark:text-slate-400">I'm</span>
               <br />
               <span className="text-gradient">{CONFIG.personal.name}</span>
             </motion.h1>
@@ -111,7 +111,7 @@ const Hero = () => {
             {/* Bio */}
             <motion.p
               variants={heroItem}
-              className="mt-6 text-slate-400 text-base sm:text-lg leading-relaxed max-w-lg"
+              className="mt-6 text-slate-650 dark:text-slate-400 text-base sm:text-lg leading-relaxed max-w-lg"
             >
               {CONFIG.personal.homeBio}
             </motion.p>
@@ -138,7 +138,7 @@ const Hero = () => {
                 rel="noopener noreferrer"
                 className={BTN_OUTLINE}
               >
-                <Download size={18} /> Download Resume
+                <Download size={18} />Resume
               </motion.a>
             </motion.div>
 
@@ -147,7 +147,7 @@ const Hero = () => {
               variants={heroItem}
               className="mt-8 flex items-center gap-3"
             >
-              <span className="text-slate-500 text-sm">Find me on</span>
+              <span className="text-slate-500 dark:text-slate-450 text-sm">Find me on</span>
               <div className="flex gap-3">
                 {[
                   { href: CONFIG.social.github, Icon: Github, label: 'GitHub' },
@@ -161,7 +161,7 @@ const Hero = () => {
                     target={label !== 'Email' ? '_blank' : undefined}
                     rel="noopener noreferrer"
                     aria-label={label}
-                    className="p-2.5 rounded-xl glass-card text-slate-400 hover:text-indigo-400 transition-colors"
+                    className="p-2.5 rounded-xl glass-card text-slate-500 dark:text-slate-400 hover:text-indigo-650 dark:hover:text-indigo-400 transition-colors"
                   >
                     <Icon size={20} />
                   </motion.a>
@@ -188,7 +188,7 @@ const Hero = () => {
         onClick={scrollToAbout}
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-slate-500 hover:text-indigo-400 transition-colors"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
         aria-label="Scroll down"
       >
         <span className="text-xs tracking-widest uppercase">Scroll</span>

@@ -12,6 +12,7 @@ import {
   BTN_PRIMARY,
   BG_ORB_1,
   BG_ORB_2,
+  ICON_BADGE,
 } from '../designSystem';
 import { staggerContainer, fadeUp, cardReveal, hoverLift, hoverButton, tapButton } from '../motionVariants';
 
@@ -38,7 +39,7 @@ const Certificates = () => {
         >
           {/* ── Section Title ──────────────────────────────────────────────── */}
           <motion.div variants={fadeUp} className="text-center mb-16">
-            <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-indigo-400 mb-3">
+            <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-indigo-600 dark:text-indigo-400 mb-3">
               Credentials
             </span>
             <h2 className="text-4xl md:text-5xl font-bold">
@@ -46,7 +47,7 @@ const Certificates = () => {
               <span className={HEADING_GRADIENT}>Certificates</span>
             </h2>
             <div className={ACCENT_BAR} />
-            <p className="mt-4 text-slate-400 text-base max-w-xl mx-auto">
+            <p className="mt-4 text-slate-600 dark:text-slate-400 text-base max-w-xl mx-auto">
               Professional certifications and completed training programs
             </p>
           </motion.div>
@@ -82,20 +83,20 @@ const Certificates = () => {
                   {/* Icon + Date row */}
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-gradient-to-br from-indigo-600/30 to-violet-600/30 border border-indigo-500/20 text-indigo-400">
+                      <div className={ICON_BADGE}>
                         <Award size={16} />
                       </div>
-                      <span className="text-xs font-semibold text-indigo-300 uppercase tracking-wider">
+                      <span className="text-xs font-semibold text-indigo-600 dark:text-indigo-300 uppercase tracking-wider">
                         {cert.issuer}
                       </span>
                     </div>
-                    <span className="text-xs text-slate-500 border border-white/10 px-2 py-0.5 rounded-full">
+                    <span className="text-xs text-slate-500 dark:text-slate-450 border border-slate-200 dark:border-white/10 px-2 py-0.5 rounded-full">
                       {cert.date}
                     </span>
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-base font-semibold text-white leading-snug flex-1 mb-4">
+                  <h3 className="text-base font-semibold text-slate-800 dark:text-white leading-snug flex-1 mb-4">
                     {cert.title}
                   </h3>
 

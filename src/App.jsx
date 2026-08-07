@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -10,14 +10,35 @@ import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
 
 function App() {
-  // Lock to dark mode — the design system is dark-first
+  const [darkMode, setDarkMode] = useState(true);
+
   useEffect(() => {
-    document.documentElement.classList.add('dark');
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      setDarkMode(savedTheme === 'dark');
+    } else {
+      // Default to dark mode if no preference saved
+      setDarkMode(true);
+    }
   }, []);
 
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [darkMode]);
+
+  const toggleTheme = () => {
+    setDarkMode(!darkMode);
+  };
+
   return (
-    <div className="bg-[#060913] text-white min-h-screen">
-      <Navbar />
+    <div className="bg-slate-50 dark:bg-[#060913] text-slate-900 dark:text-white min-h-screen transition-colors duration-300">
+      <Navbar darkMode={darkMode} toggleTheme={toggleTheme} />
       <main>
         <Hero />
         <About />

@@ -21,7 +21,7 @@ export const CONFIG = {
 
 
     resumeLink:
-       "https://drive.google.com/file/d/1YlPkPwzD5J0edXgNSOkTLQ_6TviImrE1/view?usp=drive_link",
+       "https://drive.google.com/file/d/1RerNYHc9Lw-rt-e9kCB9KQ_OcWBCxk_G/view?usp=drive_link",
   },
 
  social: {
@@ -74,89 +74,46 @@ export const CONFIG = {
 
   ],
 
-  // Keep original groups but also add the keys your Skills.jsx expects.
   skills: {
-    // original groups
-    programming: ["Java", "C++", "SQL", "JavaScript"],
-
-    ml_frameworks: [
+    frontend: [
+      "React",
+      "Angular",
+      "HTML5",
+      "CSS3",
+      "JavaScript (ES6)"
+    ],
+    backend: [
+      "Node.js",
+      "Express.js",
+      "FastAPI",
+      "Java",
+      "Python",
+      "PHP"
+    ],
+    aiml: [
       "Prompt Engineering",
       "Google Gemini API",
       "OpenAI API",
       "AI Integration",
-      "XGBoost",
+      "XGBoost"
     ],
-
-    data_science: [
-      "Pandas",
-      "NumPy",
-      "Matplotlib",
-      "Seaborn",
-      "SciPy",
-      "EDA",
-      "Feature Engineering",
+    database: [
+      "MongoDB",
+      "PostgreSQL",
+      "SQL",
     ],
-
-    mlops: [
-      "Docker",
-      "FastAPI",
-      "Streamlit",
-      "HuggingFace Deployment",
-      "Git & GitHub",
-      "Linux / Bash",
-      "Model Serving",
-    ],
-
-    cs_core: [
-      "Data Structures & Algorithms",
-      "OOP",
-      "Operating Systems",
-      "REST APIs",
-      "Software Engineering Principles",
-    ],
-
-    // keys expected by Skills.jsx — map/merge from above groups
-    languages: ["Java", "JavaScript (ES6)", "Python", "PHP"],
-
-    frameworks: [
-      // include common JS/ML frameworks and genai libs to show up in the "Frameworks & Libraries" card
-      ...[
-      
-      ].filter(Boolean), // keep safe if you don't have these
-      ...[
-        "React",
-        "Angular",
-        "Node.js",
-        "Express.js",
-        "FastAPI"
-      ],
-      // include GenAI libs too (optional)
-      ...[
-        
-      ],
-    ],
-
     tools: [
-      ...[
-        "Git",
-        "GitHub",
-        "Postman",
-        "Vercel",
-        "MongoDB",
-        "SQL",
-        "PostgreSQL",
-      ],
+      "Git",
+      "GitHub",
+      "Postman",
+      "Vercel"
     ],
-
     concepts: [
-      ...[
-        "Data Structures & Algorithms",
-        "REST APIs",
-        "JWT Authentication",
-        "API Integration",
-        "Problem Solving",
-      ],
-    ],
+      "Data Structures & Algorithms",
+      "REST APIs",
+      "JWT Authentication",
+      "Problem Solving"
+    ]
   },
 
   certificates: [

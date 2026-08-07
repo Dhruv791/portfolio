@@ -18,9 +18,7 @@
   }
 
   body {
-    @apply font-sans antialiased bg-[#060913] text-white;
-    /* Prevent white flash on load */
-    background-color: #060913;
+    @apply font-sans antialiased bg-slate-50 text-slate-900 dark:bg-[#060913] dark:text-white transition-colors duration-300;
   }
 
   /* Selection highlight */
@@ -31,7 +29,7 @@
 
   /* Scrollbar */
   ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: #060913; }
+  ::-webkit-scrollbar-track { @apply bg-slate-100 dark:bg-[#060913]; }
   ::-webkit-scrollbar-thumb {
     background: #6366f1;
     border-radius: 3px;
@@ -44,25 +42,22 @@
 
   /* Glass card — one consistent definition used site-wide */
   .glass-card {
-    background: rgba(255, 255, 255, 0.04);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 1rem;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    @apply bg-white/40 dark:bg-white/[0.04] backdrop-blur-xl border border-slate-200/80 dark:border-white/[0.08] rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.04)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.4)];
   }
 
   .glass-card:hover {
-    background: rgba(255, 255, 255, 0.07);
-    border-color: rgba(99, 102, 241, 0.3);
-    box-shadow: 0 8px 40px rgba(99, 102, 241, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    @apply bg-white/70 dark:bg-white/[0.07] border-indigo-500/20 dark:border-indigo-500/30 shadow-[0_8px_40px_rgba(99,102,241,0.08)] dark:shadow-[0_8px_40px_rgba(99,102,241,0.15)] transition-all duration-300;
   }
 
   /* Subtle dot-grid background — shared across all sections */
   .bg-grid {
     background-image:
-      radial-gradient(circle, rgba(99, 102, 241, 0.08) 1px, transparent 1px);
+      radial-gradient(circle, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
     background-size: 40px 40px;
+  }
+  .dark .bg-grid {
+    background-image:
+      radial-gradient(circle, rgba(99, 102, 241, 0.08) 1px, transparent 1px);
   }
 
   /* Gradient text */
@@ -78,20 +73,25 @@
     box-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
   }
 
+  /* Dark mode glow orbs */
+  .dark .glow-primary {
+    box-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+  }
+
   .glow-accent {
     box-shadow: 0 0 30px rgba(16, 185, 129, 0.4);
   }
 
   /* Section background — identical for all sections (visual continuity on scroll) */
   .section-bg {
-    background-color: #060913;
+    @apply bg-slate-50 dark:bg-[#060913] transition-colors duration-300;
     position: relative;
     overflow: hidden;
   }
 
   /* Alternate section tint for subtle depth without breaking continuity */
   .section-bg-alt {
-    background-color: #080e1f;
+    @apply bg-white dark:bg-[#080e1f] transition-colors duration-300;
     position: relative;
     overflow: hidden;
   }
@@ -114,5 +114,45 @@
   @keyframes gradientX {
     0%, 100% { background-position: 0% 50%; }
     50%       { background-position: 100% 50%; }
+  }
+
+  /* Infinite Marquee Animations */
+  @keyframes marquee-left {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
+  }
+
+  @keyframes marquee-right {
+    0% { transform: translate3d(-50%, 0, 0); }
+    100% { transform: translate3d(0, 0, 0); }
+  }
+
+  .animate-marquee-left {
+    display: flex;
+    width: max-content;
+    animation: marquee-left 50s linear infinite;
+  }
+
+  .animate-marquee-right {
+    display: flex;
+    width: max-content;
+    animation: marquee-right 50s linear infinite;
+  }
+
+  /* Slow marquee speed for mobile */
+  @media (max-width: 640px) {
+    .animate-marquee-left {
+      animation-duration: 70s;
+    }
+    .animate-marquee-right {
+      animation-duration: 70s;
+    }
+  }
+
+  /* Support prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-marquee-left, .animate-marquee-right {
+      animation-play-state: paused !important;
+    }
   }
 }

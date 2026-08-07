@@ -38,7 +38,7 @@ export const CONTAINER      = 'max-w-6xl mx-auto px-4 sm:px-6 lg:px-8';
 // ─── SECTION HEADING ──────────────────────────────────────────────────────────
 // Consistent heading + accent underbar — import and spread in JSX
 export const HEADING_GRADIENT =
-  'bg-gradient-to-r from-indigo-400 via-violet-400 to-emerald-400 bg-clip-text text-transparent';
+  'bg-gradient-to-r from-indigo-600 via-violet-600 to-emerald-600 dark:from-indigo-400 dark:via-violet-400 dark:to-emerald-400 bg-clip-text text-transparent';
 
 export const ACCENT_BAR =
   'w-16 h-[3px] bg-gradient-to-r from-indigo-500 to-emerald-500 mx-auto mt-3 mb-6 rounded-full';
@@ -47,28 +47,33 @@ export const ACCENT_BAR =
 // Primary gradient button — used in Hero CTAs, Project links, etc.
 export const BTN_PRIMARY =
   'inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold ' +
-  'bg-gradient-to-r from-indigo-600 to-violet-600 text-white ' +
+  'bg-gradient-to-r from-indigo-600 to-violet-600 !text-white ' +
   'shadow-[0_0_20px_rgba(99,102,241,0.4)] hover:shadow-[0_0_30px_rgba(99,102,241,0.6)] ' +
   'hover:scale-[1.03] active:scale-[0.97] transition-all duration-200';
 
 // Outline / glass button — secondary CTA
 export const BTN_OUTLINE =
   'inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold ' +
-  'border border-white/20 text-white bg-white/[0.04] backdrop-blur-sm ' +
-  'hover:border-indigo-400/60 hover:bg-white/[0.08] hover:shadow-[0_0_20px_rgba(99,102,241,0.2)] ' +
+  'border border-slate-200 dark:border-white/20 text-slate-800 dark:text-white ' +
+  'bg-white/40 dark:bg-white/[0.04] backdrop-blur-sm ' +
+  'hover:border-indigo-500/40 dark:hover:border-indigo-400/60 ' +
+  'hover:bg-indigo-50/20 dark:hover:bg-white/[0.08] ' +
+  'hover:shadow-[0_0_20px_rgba(99,102,241,0.1)] dark:hover:shadow-[0_0_20px_rgba(99,102,241,0.2)] ' +
   'hover:scale-[1.03] active:scale-[0.97] transition-all duration-200';
 
 // ─── TECH / SKILL PILL ────────────────────────────────────────────────────────
 export const TECH_PILL =
   'px-3 py-1 text-xs font-medium rounded-full ' +
-  'bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 ' +
-  'hover:bg-indigo-500/20 transition-colors duration-150';
+  'bg-indigo-500/5 dark:bg-indigo-500/10 border border-indigo-500/10 dark:border-indigo-500/20 ' +
+  'text-indigo-600 dark:text-indigo-300 ' +
+  'hover:bg-indigo-500/10 dark:hover:bg-indigo-500/20 transition-colors duration-150';
 
 // ─── ICON BADGE (for section category icons) ──────────────────────────────────
 export const ICON_BADGE =
   'w-12 h-12 rounded-xl flex items-center justify-center ' +
-  'bg-gradient-to-br from-indigo-600/30 to-violet-600/30 ' +
-  'border border-indigo-500/20 text-indigo-400';
+  'bg-gradient-to-br from-indigo-600/10 to-violet-600/10 dark:from-indigo-600/30 dark:to-violet-600/30 ' +
+  'border border-indigo-500/10 dark:border-indigo-500/20 ' +
+  'text-indigo-600 dark:text-indigo-400';
 
 // ─── BACKGROUND DECORATION ───────────────────────────────────────────────────
 // Floating blur circles — reuse across ALL sections for visual continuity.

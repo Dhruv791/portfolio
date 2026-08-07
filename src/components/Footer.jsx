@@ -11,7 +11,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-[#030710] border-t border-white/[0.06]">
+    <footer className="relative bg-slate-100 dark:bg-[#030710] border-t border-slate-200 dark:border-white/[0.06] transition-colors duration-300">
       {/* Top gradient line */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-500/40 to-transparent" />
 
@@ -28,7 +28,7 @@ const Footer = () => {
             <p className={`text-xl font-black tracking-tight ${HEADING_GRADIENT} mb-1`}>DT</p>
             <p className="text-slate-500 text-sm">
               © {currentYear}{' '}
-              <span className="text-slate-400 font-medium">{CONFIG.personal.name}</span>
+              <span className="text-slate-700 dark:text-slate-400 font-medium">{CONFIG.personal.name}</span>
               . All rights reserved.
             </p>
           </motion.div>
@@ -45,7 +45,7 @@ const Footer = () => {
               <a
                 key={link}
                 href={`#${link.toLowerCase()}`}
-                className="text-slate-500 hover:text-indigo-400 text-sm transition-colors duration-200"
+                className="text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 text-sm transition-colors duration-200"
               >
                 {link}
               </a>
@@ -72,7 +72,7 @@ const Footer = () => {
                 target={label !== 'Email' ? '_blank' : undefined}
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="p-2.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-slate-400 hover:text-indigo-400 hover:border-indigo-500/30 transition-all duration-200"
+                className="p-2.5 rounded-xl bg-white/40 dark:bg-white/[0.04] border border-slate-200 dark:border-white/[0.08] text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-500/20 dark:hover:border-indigo-500/30 transition-all duration-200"
               >
                 <Icon size={18} />
               </motion.a>

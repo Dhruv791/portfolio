@@ -72,9 +72,9 @@ const Contact = () => {
 
   // Shared glass input style
   const inputClass =
-    'w-full px-4 py-3 rounded-xl text-white placeholder-slate-500 text-sm ' +
-    'bg-white/[0.04] border border-white/[0.08] ' +
-    'focus:outline-none focus:border-indigo-500/50 focus:bg-white/[0.07] ' +
+    'w-full px-4 py-3 rounded-xl text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 text-sm ' +
+    'bg-slate-100/50 dark:bg-white/[0.04] border border-slate-200 dark:border-white/[0.08] ' +
+    'focus:outline-none focus:border-indigo-500/50 focus:bg-white/80 dark:focus:bg-white/[0.07] ' +
     'transition-all duration-200';
 
   return (
@@ -97,7 +97,7 @@ const Contact = () => {
         >
           {/* ── Section Title ──────────────────────────────────────────────── */}
           <motion.div variants={fadeUp} className="text-center mb-16">
-            <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-indigo-400 mb-3">
+            <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-indigo-600 dark:text-indigo-400 mb-3">
               Reach out
             </span>
             <h2 className="text-4xl md:text-5xl font-bold">
@@ -105,7 +105,7 @@ const Contact = () => {
               <span className={HEADING_GRADIENT}>Touch</span>
             </h2>
             <div className={ACCENT_BAR} />
-            <p className="mt-4 text-slate-400 text-base max-w-xl mx-auto">
+            <p className="mt-4 text-slate-600 dark:text-slate-400 text-base max-w-xl mx-auto">
               Let's discuss opportunities or collaborations
             </p>
           </motion.div>
@@ -127,7 +127,7 @@ const Contact = () => {
                 {
                   Icon: MapPin,
                   label: 'Location',
-                  value: 'Punjab, India',
+                  value: 'Muzaffarnagar, India',
                   href: null,
                 },
               ].map(({ Icon, label, value, href }) => (
@@ -143,11 +143,11 @@ const Contact = () => {
                   <div>
                     <p className="text-xs text-slate-500 uppercase tracking-wider mb-0.5">{label}</p>
                     {href ? (
-                      <a href={href} className="text-white font-medium hover:text-indigo-400 transition-colors text-sm">
+                      <a href={href} className="text-slate-800 dark:text-white font-medium hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors text-sm">
                         {value}
                       </a>
                     ) : (
-                      <p className="text-white font-medium text-sm">{value}</p>
+                      <p className="text-slate-800 dark:text-white font-medium text-sm">{value}</p>
                     )}
                   </div>
                 </motion.div>
@@ -168,7 +168,7 @@ const Contact = () => {
                       target="_blank"
                       rel="noreferrer"
                       aria-label={label}
-                      className={`${GLASS_CARD} ${GLASS_CARD_HOVER} p-3 text-slate-400 hover:text-indigo-400 transition-colors`}
+                      className={`${GLASS_CARD} ${GLASS_CARD_HOVER} p-3 text-slate-500 dark:text-slate-400 hover:text-indigo-650 dark:hover:text-indigo-400 transition-colors`}
                     >
                       <Icon size={22} />
                     </motion.a>

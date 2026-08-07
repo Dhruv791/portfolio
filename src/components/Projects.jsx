@@ -38,11 +38,11 @@ const BrowserMockup = ({ src, alt, flip }) => (
     {/* Browser chrome */}
     <div className={`relative ${GLASS_CARD} overflow-hidden`}>
       {/* Browser top bar */}
-      <div className="flex items-center gap-1.5 px-4 py-3 border-b border-white/[0.06] bg-white/[0.03]">
+      <div className="flex items-center gap-1.5 px-4 py-3 border-b border-slate-200/50 dark:border-white/[0.06] bg-slate-100/50 dark:bg-white/[0.03]">
         <div className="w-3 h-3 rounded-full bg-red-500/70" />
         <div className="w-3 h-3 rounded-full bg-amber-500/70" />
         <div className="w-3 h-3 rounded-full bg-emerald-500/70" />
-        <div className="ml-3 flex-1 px-3 py-1 rounded bg-white/[0.06] text-slate-500 text-xs font-mono truncate">
+        <div className="ml-3 flex-1 px-3 py-1 rounded bg-slate-200/50 dark:bg-white/[0.06] text-slate-600 dark:text-slate-500 text-xs font-mono truncate">
           localhost:5173
         </div>
       </div>
@@ -88,7 +88,7 @@ const Projects = () => {
         >
           {/* ── Section Title ──────────────────────────────────────────────── */}
           <motion.div variants={fadeUp} className="text-center mb-20">
-            <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-indigo-400 mb-3">
+            <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-indigo-600 dark:text-indigo-400 mb-3">
               Selected work
             </span>
             <h2 className="text-4xl md:text-5xl font-bold">
@@ -96,7 +96,7 @@ const Projects = () => {
               <span className={HEADING_GRADIENT}>Projects</span>
             </h2>
             <div className={ACCENT_BAR} />
-            <p className="mt-4 text-slate-400 text-base max-w-xl mx-auto">
+            <p className="mt-4 text-slate-600 dark:text-slate-400 text-base max-w-xl mx-auto">
               Here are some of my recent works
             </p>
           </motion.div>
@@ -118,20 +118,20 @@ const Projects = () => {
                     {/* Project number */}
                     <motion.span
                       variants={fadeUp}
-                      className="text-7xl font-black text-white/[0.04] leading-none select-none"
+                      className="text-7xl font-black text-slate-950/[0.04] dark:text-white/[0.04] leading-none select-none"
                     >
                       {String(index + 1).padStart(2, '0')}
                     </motion.span>
 
                     {/* Title */}
                     <motion.div variants={fadeUp} className="-mt-8">
-                      <h3 className="text-2xl sm:text-3xl font-bold text-white leading-tight">
+                      <h3 className="text-2xl sm:text-3xl font-bold text-slate-800 dark:text-white leading-tight">
                         {project.title}
                       </h3>
                     </motion.div>
 
                     {/* Description */}
-                    <motion.p variants={fadeUp} className="text-slate-400 leading-relaxed">
+                    <motion.p variants={fadeUp} className="text-slate-650 dark:text-slate-400 leading-relaxed">
                       {project.description}
                     </motion.p>
 
